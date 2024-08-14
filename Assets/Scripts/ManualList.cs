@@ -22,7 +22,8 @@ public class ManualList: MonoBehaviour
     {
         randomPlaces = new int[rightObstaclesTransforms.Length];
     }
- 
+
+
 
     public enum lists
     {

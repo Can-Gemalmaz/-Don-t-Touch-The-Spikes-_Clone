@@ -15,9 +15,11 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D playerRigidBody;
     BoxCollider2D boxCollider2D;
+    
 
     Vector2 linearVelocity;
     int turns = 0;
+
 
     private void Awake()
     {
@@ -40,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         playerRigidBody.AddForce(linearVelocity);
         
         
-        //obstacleManager.SpawnRightObstacles(0);
+        obstacleManager.SpawnRightObstacles(0);
         candyManager.SpawnRightCandy();
     }
 

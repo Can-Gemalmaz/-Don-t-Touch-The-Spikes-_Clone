@@ -7439,6 +7439,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manualList: {fileID: 429309323}
+  rightCandyTransforms:
+  - {fileID: 980217310}
+  - {fileID: 442301927}
+  - {fileID: 1340596922}
+  - {fileID: 1485508912}
+  - {fileID: 2085325681}
+  - {fileID: 879505497}
+  leftCandyTransforms:
+  - {fileID: 761746312}
+  - {fileID: 1303198009}
+  - {fileID: 725379703}
+  - {fileID: 687221913}
+  - {fileID: 1092891101}
+  - {fileID: 122543822}
 --- !u!1 &2085325681
 GameObject:
   m_ObjectHideFlags: 0
