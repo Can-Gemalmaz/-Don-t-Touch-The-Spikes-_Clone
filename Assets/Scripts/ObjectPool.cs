@@ -10,7 +10,9 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int spawnObsAmount = 10;
 
 
-    private List<GameObject> objectPool = new List<GameObject>();
+    //private List<GameObject> objectPool = new List<GameObject>();
+
+    MyList<GameObject> objectPool = new MyList<GameObject>(10);
 
     private void Awake()
     {
@@ -51,9 +53,9 @@ public class ObjectPool : MonoBehaviour
 
     public void DeActiveAllObstacles()
     {
-        foreach (GameObject obstacle in objectPool)
+        for (int i = 0; i < objectPool.Count; i++)
         {
-            obstacle.SetActive(false);
+            objectPool[i].SetActive(false);
         }
     }
 }

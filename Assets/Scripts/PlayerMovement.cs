@@ -40,10 +40,8 @@ public class PlayerMovement : MonoBehaviour
 
         linearVelocity = new Vector2(velocity, 0);
         playerRigidBody.AddForce(linearVelocity);
-        
-        
+
         obstacleManager.SpawnRightObstacles(0);
-        candyManager.SpawnRightCandy();
     }
 
 

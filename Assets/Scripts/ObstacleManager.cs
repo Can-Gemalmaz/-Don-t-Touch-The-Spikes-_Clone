@@ -8,10 +8,21 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] ManualList manualList;
 
     ObjectPool objectPool;
+    MyList<int> changeForTurn;
+    MyList<int> numberOfObs;
 
     private void Start()
     {
         objectPool = ObjectPool.instance;
+
+        changeForTurn = new MyList<int>(manualList.GetArray<int>(ManualList.lists.roundInChange).Length);
+        numberOfObs = new MyList<int>(manualList.GetArray<int>(ManualList.lists.numberOfObs).Length);
+
+        for (int i = 0; i < manualList.GetArray<int>(ManualList.lists.numberOfObs).Length; i++)
+        {
+            changeForTurn.Add(manualList.GetArray<int>(ManualList.lists.roundInChange)[i]);
+            numberOfObs.Add(manualList.GetArray<int>(ManualList.lists.numberOfObs)[i]);
+        }
 
         SpawnRightObstacles(0);
     }
@@ -28,14 +39,20 @@ public class ObstacleManager : MonoBehaviour
 
     private void SpawnObstacles(ManualList.lists lists, int turn)
     {
-        int[] changeForTurn =  manualList.GetArray<int>(ManualList.lists.roundInChange);
-        int[] numberOfObs = manualList.GetArray<int>(ManualList.lists.numberOfObs);
-        Transform[] obstaclesCopyArray = manualList.GetArray<Transform>(lists);
-        for (int i = 0; i < changeForTurn.Length; i++)
+
+        //int[] changeForTurn =  manualList.GetArray<int>(ManualList.lists.roundInChange);
+        //int[] numberOfObs = manualList.GetArray<int>(ManualList.lists.numberOfObs);
+        //Transform[] obstaclesCopyArray = manualList.GetArray<Transform>(lists);
+        MyList<Transform> obstaclesCopyArray = new MyList<Transform>(manualList.GetArray<Transform>(lists).Length);
+        for (int i = 0; i < manualList.GetArray<Transform>(lists).Length; i++)
         {
-            if (turn >= changeForTurn[changeForTurn.Length - 1])
+            obstaclesCopyArray.Add(manualList.GetArray<Transform>(lists)[i]);
+        }
+        for (int i = 0; i < changeForTurn.Count; i++)
+        {
+            if (turn >= changeForTurn[changeForTurn.Count - 1])
             {
-                int[] randomNumbers = manualList.GetArray<int>(ManualList.lists.randomNumbers, numberOfObs[numberOfObs.Length - 1]);
+                int[] randomNumbers = manualList.GetArray<int>(ManualList.lists.randomNumbers, numberOfObs[numberOfObs.Count - 1]);
                 for (int j = 0; j < randomNumbers.Length; j++)
                 {
                     GameObject triangleObstacle = ObjectPool.instance.GetPooledObject();
